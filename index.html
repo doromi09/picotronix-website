@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picotronix - FPGA & SoC 설계 전문기업</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        body[lang="en"], 
+        [lang="en"] {
+            font-family: 'Lora', 'Georgia', serif;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #F38554;
+        }
+
+        .lang-toggle {
+            background: #F38554;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .highlight {
+            color: #F38554;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #000;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #F38554;
+            margin: 1rem auto;
+        }
+
+        /* Business Cards */
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .business-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .business-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+        }
+
+        .business-card h3 {
+            color: #F38554;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .business-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .business-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .business-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #F38554;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #F38554;
+        }
+
+        .project-card h3 {
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About */
+        .about-content {
+            background: #f9f9f9;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .info-item {
+            padding: 1rem;
+        }
+
+        .info-item strong {
+            color: #F38554;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact */
+        .contact-info {
+            background: #000;
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            color: #F38554;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: #F38554;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .business-grid,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="logo.png" alt="Picotronix Logo">
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <nav id="nav">
+                <a href="#home" data-ko="홈" data-en="Home">홈</a>
+                <a href="#about" data-ko="회사소개" data-en="About">회사소개</a>
+                <a href="#business" data-ko="사업영역" data-en="Business">사업영역</a>
+                <a href="#projects" data-ko="프로젝트" data-en="Projects">프로젝트</a>
+                <a href="#contact" data-ko="연락처" data-en="Contact">연락처</a>
+                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>
+            <span data-ko="FPGA & SoC 설계 전문기업" data-en="FPGA & SoC Design Specialist">FPGA & SoC 설계 전문기업</span>
+            <span class="highlight">Picotronix</span>
+        </h1>
+        <p data-ko="고객님과 행복을 함께하는 엔지니어링을 추구합니다" data-en="We pursue engineering that shares happiness with our customers">
+            고객님과 행복을 함께하는 엔지니어링을 추구합니다
+        </p>
+    </section>
+
+    <div class="container">
+        <section id="about">
+            <h2 data-ko="회사소개" data-en="About Us">회사소개</h2>
+            <div class="about-content">
+                <p data-ko="피코트로닉스는 FPGA & SoC 설계, 스마트팜 제어기, 임베디드 신호처리 시스템을 개발 및 공급하고 있습니다." 
+                   data-en="Picotronix develops and supplies FPGA & SoC design, smart farm controllers, and embedded signal processing systems.">
+                    피코트로닉스는 FPGA & SoC 설계, 스마트팜 제어기, 임베디드 신호처리 시스템을 개발 및 공급하고 있습니다.
+                </p>
+                <p data-ko="피코트로닉스는 고객님을 행복하게 함으로써 더불어 행복해지는 가치 있는 엔지니어링을 추구합니다." 
+                   data-en="Picotronix pursues valuable engineering that brings happiness to customers and ourselves together.">
+                    피코트로닉스는 고객님을 행복하게 함으로써 더불어 행복해지는 가치 있는 엔지니어링을 추구합니다.
+                </p>
+                <p data-ko="엔지니어링 31년, 창업 17년 급변하는 기술 속에서 멈추지 않고 즐기며 달리고 있습니다." 
+                   data-en="With 31 years of engineering experience and 17 years since establishment, we continue to run with joy through rapidly changing technologies.">
+                    엔지니어링 31년, 창업 17년 급변하는 기술 속에서 멈추지 않고 즐기며 달리고 있습니다.
+                </p>
+                <p data-ko="전문 엔지니어링 기업을 꿈꾸는 피코트로닉스는 앞으로도 꾸준히 성장하겠습니다." 
+                   data-en="Picotronix, dreaming of becoming a professional engineering company, will continue to grow steadily.">
+                    전문 엔지니어링 기업을 꿈꾸는 피코트로닉스는 앞으로도 꾸준히 성장하겠습니다.
+                </p>
+            </div>
+
+            <div class="company-info">
+                <div class="info-item">
+                    <strong data-ko="대표" data-en="CEO">대표</strong>
+                    <span>김임규</span>
+                </div>
+                <div class="info-item">
+                    <strong data-ko="설립" data-en="Founded">설립</strong>
+                    <span>2010. 11</span>
+                </div>
+                <div class="info-item">
+                    <strong data-ko="주소" data-en="Address">주소</strong>
+                    <span data-ko="서울시 금천구 가산디지털1로 58, 910호" data-en="910, 58 Gasan Digital 1-ro, Geumcheon-gu, Seoul">서울시 금천구 가산디지털1로 58, 910호</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="business">
+            <h2 data-ko="사업영역" data-en="Business Areas">사업영역</h2>
+            <div class="business-grid">
+                <div class="business-card">
+                    <h3>FPGA & SoC Embedded System</h3>
+                    <ul>
+                        <li data-ko="임베디드 HW, SW" data-en="Embedded HW, SW">임베디드 HW, SW</li>
+                        <li>ISP (Image Signal Processing)</li>
+                        <li data-ko="고성능 영상처리 시스템" data-en="High-performance Vision System">고성능 영상처리 시스템</li>
+                    </ul>
+                </div>
+                <div class="business-card">
+                    <h3>Design Service</h3>
+                    <ul>
+                        <li>Vision Processing</li>
+                        <li>OEM/ODM</li>
+                        <li data-ko="맞춤형 하드웨어 설계" data-en="Custom Hardware Design">맞춤형 하드웨어 설계</li>
+                        <li data-ko="펌웨어 개발" data-en="Firmware Development">펌웨어 개발</li>
+                    </ul>
+                </div>
+                <div class="business-card">
+                    <h3>Smart Farm</h3>
+                    <ul>
+                        <li data-ko="토양상태 측정기" data-en="Soil Condition Meter">토양상태 측정기</li>
+                        <li data-ko="배지상태 측정기" data-en="Medium Condition Meter">배지상태 측정기</li>
+                        <li data-ko="식물 생장 모니터링" data-en="Plant Growth Monitoring">식물 생장 모니터링</li>
+                        <li data-ko="데이터 분석 및 제어" data-en="Data Analysis & Control">데이터 분석 및 제어</li>
+                    </ul>
+                </div>
+                <div class="business-card">
+                    <h3>Education</h3>
+                    <ul>
+                        <li>FPGA Design Training</li>
+                        <li>Zynq SoC Design</li>
+                        <li>HLS Design</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 data-ko="프로젝트" data-en="Projects">프로젝트</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3 data-ko="Canon 카메라용 Focus Lens Confirm Board" data-en="Focus Lens Confirm Board for Canon Camera">Canon 카메라용 Focus Lens Confirm Board</h3>
+                    <p data-ko="카메라 렌즈의 정밀한 초점 테스트 및 캘리브레이션 시스템" data-en="Precision focus test and calibration system for camera lenses">카메라 렌즈의 정밀한 초점 테스트 및 캘리브레이션 시스템</p>
+                    <ul>
+                        <li>Aperture Value Support</li>
+                        <li>Focal Length Support</li>
+                        <li>Front/Back Focus Calibration</li>
+                        <li data-ko="펌웨어 업그레이드" data-en="Firmware Upgrade">펌웨어 업그레이드</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 data-ko="ADAS용 Stereo Camera Control Board" data-en="Stereo Camera Control Board for ADAS">ADAS용 Stereo Camera Control Board</h3>
+                    <p data-ko="첨단 운전자 보조 시스템을 위한 스테레오 카메라 제어 솔루션" data-en="Stereo camera control solution for Advanced Driver Assist System">첨단 운전자 보조 시스템을 위한 스테레오 카메라 제어 솔루션</p>
+                </div>
+                <div class="project-card">
+                    <h3 data-ko="Road View용 Multi Camera Viewer" data-en="Multi Camera Viewer for Road View">Road View용 Multi Camera Viewer</h3>
+                    <p data-ko="도로 모니터링을 위한 다중 카메라 제어 및 뷰어 시스템" data-en="Multi-camera control and viewer system for road monitoring">도로 모니터링을 위한 다중 카메라 제어 및 뷰어 시스템</p>
+                </div>
+                <div class="project-card">
+                    <h3>VIDEO Matrix Switcher</h3>
+                    <p data-ko="방송 및 영상 시스템을 위한 매트릭스 스위처" data-en="Matrix switcher for broadcasting and video systems">방송 및 영상 시스템을 위한 매트릭스 스위처</p>
+                </div>
+                <div class="project-card">
+                    <h3>HDMI to HD-SDI Converter</h3>
+                    <p data-ko="방송용 신호 변환 장비" data-en="Signal conversion equipment for broadcasting">방송용 신호 변환 장비</p>
+                </div>
+                <div class="project-card">
+                    <h3 data-ko="Plant Growth Monitoring System" data-en="Plant Growth Monitoring System">Plant Growth Monitoring System</h3>
+                    <p data-ko="식물 생장을 실시간으로 모니터링하는 스마트팜 솔루션" data-en="Smart farm solution for real-time plant growth monitoring">식물 생장을 실시간으로 모니터링하는 스마트팜 솔루션</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 data-ko="연락처" data-en="Contact">연락처</h2>
+            <div class="contact-info">
+                <h3>Picotronix</h3>
+                <p><strong>Email:</strong> <a href="mailto:limgyu@picotronix.co.kr">limgyu@picotronix.co.kr</a></p>
+                <p><strong>Website:</strong> <a href="http://www.picotronix.co.kr" target="_blank">www.picotronix.co.kr</a></p>
+                <p><strong data-ko="주소" data-en="Address">주소</strong>: <span data-ko="서울시 금천구 가산디지털1로 58, 910호" data-en="910, 58 Gasan Digital 1-ro, Geumcheon-gu, Seoul, Korea">서울시 금천구 가산디지털1로 58, 910호</span></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Picotronix. All rights reserved.</p>
+        <p data-ko="FPGA & SoC 설계 전문기업" data-en="FPGA & SoC Design Specialist">FPGA & SoC 설계 전문기업</p>
+    </footer>
+
+    <script>
+        let currentLang = 'ko';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ko' ? 'en' : 'ko';
+            const elements = document.querySelectorAll('[data-ko][data-en]');
+            
+            elements.forEach(el => {
+                if (currentLang === 'en') {
+                    el.textContent = el.getAttribute('data-en');
+                } else {
+                    el.textContent = el.getAttribute('data-ko');
+                }
+            });
+
+            document.querySelector('.lang-toggle').textContent = currentLang === 'ko' ? 'EN' : '한글';
+            document.documentElement.lang = currentLang;
+        }
+
+        function toggleMenu() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu after clicking
+                    document.getElementById('nav').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
