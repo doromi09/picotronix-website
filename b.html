@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Service - Picotronix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        body[lang="en"], [lang="en"] {
+            font-family: 'Lora', 'Georgia', serif;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-controls {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn, .lang-toggle {
+            background: #F38554;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover, .lang-toggle:hover {
+            background: #d16d3f;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            color: #F38554;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #F38554;
+            padding-bottom: 0.5rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #F38554;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #F38554;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-btn, .lang-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-controls">
+            <a href="index.html" class="back-btn" data-ko="← 메인으로" data-en="← Back">← 메인으로</a>
+            <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+        </div>
+        <h1>Design Service</h1>
+        <p data-ko="고객 맞춤형 설계 서비스" data-en="Custom Design Service">고객 맞춤형 설계 서비스</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2 data-ko="개요" data-en="Overview">개요</h2>
+            <p data-ko="고객의 요구사항에 맞춘 맞춤형 하드웨어 및 소프트웨어 설계 서비스를 제공합니다. OEM/ODM 개발부터 양산까지 전 과정을 지원합니다." 
+               data-en="We provide custom hardware and software design services tailored to customer requirements. We support the entire process from OEM/ODM development to mass production.">
+                고객의 요구사항에 맞춘 맞춤형 하드웨어 및 소프트웨어 설계 서비스를 제공합니다. OEM/ODM 개발부터 양산까지 전 과정을 지원합니다.
+            </p>
+            <p data-ko="Picotronix는 풍부한 경험과 기술력을 바탕으로 고객이 원하는 제품을 신속하고 정확하게 개발합니다. 아이디어 단계부터 양산까지 One-Stop 솔루션을 제공합니다."
+               data-en="Based on extensive experience and technical expertise, Picotronix develops products customers want quickly and accurately. We provide a one-stop solution from the idea stage to mass production.">
+                Picotronix는 풍부한 경험과 기술력을 바탕으로 고객이 원하는 제품을 신속하고 정확하게 개발합니다. 아이디어 단계부터 양산까지 One-Stop 솔루션을 제공합니다.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="제공 서비스" data-en="Services">제공 서비스</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Vision Processing</h3>
+                    <p data-ko="영상 처리 알고리즘 개발 및 최적화 서비스를 제공합니다. 고객의 요구사항에 맞는 맞춤형 영상처리 솔루션을 구현하여 최고의 성능을 보장합니다." 
+                       data-en="We provide image processing algorithm development and optimization services. We implement customized image processing solutions tailored to customer requirements to ensure the best performance.">
+                        영상 처리 알고리즘 개발 및 최적화 서비스를 제공합니다. 고객의 요구사항에 맞는 맞춤형 영상처리 솔루션을 구현하여 최고의 성능을 보장합니다.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>OEM/ODM</h3>
+                    <p data-ko="제품 기획부터 양산까지 토털 솔루션을 제공합니다. 고객의 브랜드로 완제품을 공급하거나, 고객 디자인을 제조하는 서비스를 제공합니다." 
+                       data-en="We provide total solutions from product planning to mass production. We supply finished products under the customer's brand or manufacture customer designs.">
+                        제품 기획부터 양산까지 토털 솔루션을 제공합니다. 고객의 브랜드로 완제품을 공급하거나, 고객 디자인을 제조하는 서비스를 제공합니다.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="하드웨어 설계" data-en="Hardware Design">하드웨어 설계</h3>
+                    <p data-ko="회로 설계, PCB 레이아웃, 프로토타입 제작까지 전문적인 하드웨어 설계 서비스를 제공합니다. 신뢰성 높은 하드웨어를 설계합니다." 
+                       data-en="We provide professional hardware design services including circuit design, PCB layout, and prototype manufacturing. We design highly reliable hardware.">
+                        회로 설계, PCB 레이아웃, 프로토타입 제작까지 전문적인 하드웨어 설계 서비스를 제공합니다. 신뢰성 높은 하드웨어를 설계합니다.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="펌웨어 개발" data-en="Firmware Development">펌웨어 개발</h3>
+                    <p data-ko="임베디드 시스템 펌웨어 및 디바이스 드라이버 개발 서비스를 제공합니다. 안정적이고 효율적인 소프트웨어를 개발합니다." 
+                       data-en="We provide embedded system firmware and device driver development services. We develop stable and efficient software.">
+                        임베디드 시스템 펌웨어 및 디바이스 드라이버 개발 서비스를 제공합니다. 안정적이고 효율적인 소프트웨어를 개발합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="개발 역량" data-en="Development Capabilities">개발 역량</h2>
+            <ul>
+                <li data-ko="임베디드 시스템 설계 (ARM, RISC-V, FPGA SoC)" data-en="Embedded system design (ARM, RISC-V, FPGA SoC)">임베디드 시스템 설계 (ARM, RISC-V, FPGA SoC)</li>
+                <li data-ko="아날로그/디지털 회로 설계" data-en="Analog/Digital circuit design">아날로그/디지털 회로 설계</li>
+                <li data-ko="고속 PCB 설계 및 Signal Integrity 분석" data-en="High-speed PCB design and Signal Integrity analysis">고속 PCB 설계 및 Signal Integrity 분석</li>
+                <li data-ko="전원 설계 및 EMI/EMC 대응" data-en="Power supply design and EMI/EMC compliance">전원 설계 및 EMI/EMC 대응</li>
+                <li data-ko="펌웨어 개발 (Bare-metal, RTOS, Linux)" data-en="Firmware development (Bare-metal, RTOS, Linux)">펌웨어 개발 (Bare-metal, RTOS, Linux)</li>
+                <li data-ko="통신 프로토콜 구현 (UART, SPI, I2C, Ethernet, USB)" data-en="Communication protocol implementation (UART, SPI, I2C, Ethernet, USB)">통신 프로토콜 구현 (UART, SPI, I2C, Ethernet, USB)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="프로젝트 프로세스" data-en="Project Process">프로젝트 프로세스</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="1. 상담 및 기획" data-en="1. Consultation & Planning">1. 상담 및 기획</h3>
+                    <p data-ko="고객의 아이디어와 요구사항을 정확히 파악하고, 실현 가능한 솔루션을 제안합니다." data-en="We accurately understand customer ideas and requirements and propose feasible solutions.">고객의 아이디어와 요구사항을 정확히 파악하고, 실현 가능한 솔루션을 제안합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="2. 설계 및 개발" data-en="2. Design & Development">2. 설계 및 개발</h3>
+                    <p data-ko="하드웨어 회로 설계, PCB 설계, 펌웨어 개발을 단계별로 진행합니다." data-en="We proceed with hardware circuit design, PCB design, and firmware development step by step.">하드웨어 회로 설계, PCB 설계, 펌웨어 개발을 단계별로 진행합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="3. 프로토타입 제작" data-en="3. Prototype Manufacturing">3. 프로토타입 제작</h3>
+                    <p data-ko="시제품을 제작하고 기능 및 성능을 검증합니다." data-en="We manufacture prototypes and verify functions and performance.">시제품을 제작하고 기능 및 성능을 검증합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="4. 테스트 및 검증" data-en="4. Testing & Verification">4. 테스트 및 검증</h3>
+                    <p data-ko="다양한 환경에서 테스트를 수행하고 문제점을 개선합니다." data-en="We perform tests in various environments and improve issues.">다양한 환경에서 테스트를 수행하고 문제점을 개선합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="5. 양산 준비" data-en="5. Production Preparation">5. 양산 준비</h3>
+                    <p data-ko="양산을 위한 설계 최적화 및 제조 문서를 작성합니다." data-en="We optimize design for mass production and prepare manufacturing documents.">양산을 위한 설계 최적화 및 제조 문서를 작성합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="6. 기술 지원" data-en="6. Technical Support">6. 기술 지원</h3>
+                    <p data-ko="양산 후에도 지속적인 기술 지원을 제공합니다." data-en="We provide continuous technical support even after mass production.">양산 후에도 지속적인 기술 지원을 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="적용 분야" data-en="Applications">적용 분야</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="산업 자동화" data-en="Industrial Automation">산업 자동화</h3>
+                    <p data-ko="PLC, 제어 시스템, 센서 인터페이스" data-en="PLC, control systems, sensor interfaces">PLC, 제어 시스템, 센서 인터페이스</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="의료 기기" data-en="Medical Devices">의료 기기</h3>
+                    <p data-ko="진단 장비, 모니터링 시스템" data-en="Diagnostic equipment, monitoring systems">진단 장비, 모니터링 시스템</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="통신 장비" data-en="Communication Equipment">통신 장비</h3>
+                    <p data-ko="네트워크 장비, 무선 통신 시스템" data-en="Network equipment, wireless communication systems">네트워크 장비, 무선 통신 시스템</p>
+                </div>
+                <div class="feature-card">
+                    <h3>IoT</h3>
+                    <p data-ko="스마트 홈, 웨어러블, 센서 네트워크" data-en="Smart home, wearables, sensor networks">스마트 홈, 웨어러블, 센서 네트워크</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="왜 Picotronix인가?" data-en="Why Picotronix?">왜 Picotronix인가?</h2>
+            <ul>
+                <li data-ko="31년의 엔지니어링 경험과 노하우" data-en="31 years of engineering experience and know-how">31년의 엔지니어링 경험과 노하우</li>
+                <li data-ko="빠른 개발 속도와 합리적인 비용" data-en="Fast development speed and reasonable cost">빠른 개발 속도와 합리적인 비용</li>
+                <li data-ko="소량 생산부터 대량 양산까지 유연한 대응" data-en="Flexible response from small to mass production">소량 생산부터 대량 양산까지 유연한 대응</li>
+                <li data-ko="고객과의 긴밀한 커뮤니케이션" data-en="Close communication with customers">고객과의 긴밀한 커뮤니케이션</li>
+                <li data-ko="지속적인 기술 지원 및 유지보수" data-en="Continuous technical support and maintenance">지속적인 기술 지원 및 유지보수</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Picotronix. All rights reserved.</p>
+        <p data-ko="FPGA & SoC 설계 전문기업" data-en="FPGA & SoC Design Specialist">FPGA & SoC 설계 전문기업</p>
+    </footer>
+
+    <script>
+        let currentLang = 'ko';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ko' ? 'en' : 'ko';
+            const elements = document.querySelectorAll('[data-ko][data-en]');
+            
+            elements.forEach(el => {
+                if (currentLang === 'en') {
+                    el.textContent = el.getAttribute('data-en');
+                } else {
+                    el.textContent = el.getAttribute('data-ko');
+                }
+            });
+
+            document.querySelector('.lang-toggle').textContent = currentLang === 'ko' ? 'EN' : '한글';
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+</body>
+</html>

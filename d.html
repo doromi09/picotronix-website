@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Picotronix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        body[lang="en"], [lang="en"] {
+            font-family: 'Lora', 'Georgia', serif;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-controls {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn, .lang-toggle {
+            background: #F38554;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover, .lang-toggle:hover {
+            background: #d16d3f;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            color: #F38554;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #F38554;
+            padding-bottom: 0.5rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #F38554;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #F38554;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card h4 {
+            color: #F38554;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .feature-card ul {
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-btn, .lang-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-controls">
+            <a href="index.html" class="back-btn" data-ko="← 메인으로" data-en="← Back">← 메인으로</a>
+            <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+        </div>
+        <h1>Education</h1>
+        <p data-ko="FPGA & SoC 전문 교육" data-en="FPGA & SoC Professional Training">FPGA & SoC 전문 교육</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2 data-ko="개요" data-en="Overview">개요</h2>
+            <p data-ko="실무 중심의 FPGA 및 SoC 설계 교육을 제공합니다. 이론과 실습을 병행하여 실전 역량을 키웁니다." 
+               data-en="We provide practice-oriented FPGA and SoC design training. We develop practical skills by combining theory and practice.">
+                실무 중심의 FPGA 및 SoC 설계 교육을 제공합니다. 이론과 실습을 병행하여 실전 역량을 키웁니다.
+            </p>
+            <p data-ko="Picotronix의 교육 과정은 31년의 실무 경험을 바탕으로 설계되었습니다. 현업에서 바로 적용할 수 있는 실용적인 지식과 기술을 전달합니다. 소수정예 교육으로 수강생 개개인에게 집중합니다."
+               data-en="Picotronix's training courses are designed based on 31 years of practical experience. We deliver practical knowledge and skills that can be applied immediately in the field. We focus on each student through small group training.">
+                Picotronix의 교육 과정은 31년의 실무 경험을 바탕으로 설계되었습니다. 현업에서 바로 적용할 수 있는 실용적인 지식과 기술을 전달합니다. 소수정예 교육으로 수강생 개개인에게 집중합니다.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="교육 과정" data-en="Training Courses">교육 과정</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>FPGA Design Training</h3>
+                    <p data-ko="FPGA 기초부터 고급 설계 기법까지 체계적으로 학습합니다." 
+                       data-en="Systematically learn from FPGA basics to advanced design techniques.">
+                        FPGA 기초부터 고급 설계 기법까지 체계적으로 학습합니다.
+                    </p>
+                    <h4 data-ko="교육 내용" data-en="Course Content">교육 내용</h4>
+                    <ul>
+                        <li>Verilog/VHDL HDL</li>
+                        <li data-ko="디지털 회로 설계" data-en="Digital Circuit Design">디지털 회로 설계</li>
+                        <li data-ko="타이밍 분석 및 최적화" data-en="Timing Analysis & Optimization">타이밍 분석 및 최적화</li>
+                        <li data-ko="시뮬레이션 및 검증" data-en="Simulation & Verification">시뮬레이션 및 검증</li>
+                        <li data-ko="FPGA 아키텍처" data-en="FPGA Architecture">FPGA 아키텍처</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>Zynq SoC Design</h3>
+                    <p data-ko="Xilinx Zynq 플랫폼 기반 SoC 시스템 설계 방법을 학습합니다." 
+                       data-en="Learn SoC system design methods based on Xilinx Zynq platform.">
+                        Xilinx Zynq 플랫폼 기반 SoC 시스템 설계 방법을 학습합니다.
+                    </p>
+                    <h4 data-ko="교육 내용" data-en="Course Content">교육 내용</h4>
+                    <ul>
+                        <li>Zynq Architecture</li>
+                        <li>PS-PL Interface</li>
+                        <li data-ko="AXI 프로토콜" data-en="AXI Protocol">AXI 프로토콜</li>
+                        <li data-ko="리눅스 디바이스 드라이버" data-en="Linux Device Driver">리눅스 디바이스 드라이버</li>
+                        <li data-ko="시스템 통합" data-en="System Integration">시스템 통합</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>HLS Design</h3>
+                    <p data-ko="High-Level Synthesis를 활용한 빠른 FPGA 개발 방법을 익힙니다." 
+                       data-en="Learn fast FPGA development methods using High-Level Synthesis.">
+                        High-Level Synthesis를 활용한 빠른 FPGA 개발 방법을 익힙니다.
+                    </p>
+                    <h4 data-ko="교육 내용" data-en="Course Content">교육 내용</h4>
+                    <ul>
+                        <li>C/C++ to RTL</li>
+                        <li data-ko="최적화 지시어" data-en="Optimization Directives">최적화 지시어</li>
+                        <li data-ko="파이프라인 설계" data-en="Pipeline Design">파이프라인 설계</li>
+                        <li data-ko="성능 분석" data-en="Performance Analysis">성능 분석</li>
+                        <li data-ko="IP 생성 및 통합" data-en="IP Generation & Integration">IP 생성 및 통합</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="교육 특징" data-en="Training Features">교육 특징</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="실무 중심 교육" data-en="Practice-Oriented Training">실무 중심 교육</h3>
+                    <p data-ko="이론 30%, 실습 70%의 비율로 실제 프로젝트를 수행하며 학습합니다." data-en="Learn by conducting actual projects with a ratio of 30% theory and 70% practice.">이론 30%, 실습 70%의 비율로 실제 프로젝트를 수행하며 학습합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="소수정예 교육" data-en="Small Group Training">소수정예 교육</h3>
+                    <p data-ko="5명 이내의 소규모 그룹으로 진행하여 개인별 맞춤 지도가 가능합니다." data-en="Conducted in small groups of 5 or fewer to enable personalized guidance.">5명 이내의 소규모 그룹으로 진행하여 개인별 맞춤 지도가 가능합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="1:1 멘토링" data-en="1:1 Mentoring">1:1 멘토링</h3>
+                    <p data-ko="수강생의 수준과 목표에 맞춘 개인별 코칭을 제공합니다." data-en="We provide individual coaching tailored to the student's level and goals.">수강생의 수준과 목표에 맞춘 개인별 코칭을 제공합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="실전 장비 사용" data-en="Real Equipment">실전 장비 사용</h3>
+                    <p data-ko="최신 FPGA 보드와 개발 도구를 사용하여 실습합니다." data-en="Practice using the latest FPGA boards and development tools.">최신 FPGA 보드와 개발 도구를 사용하여 실습합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="프로젝트 기반" data-en="Project-Based">프로젝트 기반</h3>
+                    <p data-ko="실제 산업 현장의 프로젝트를 기반으로 학습합니다." data-en="Learn based on actual industrial projects.">실제 산업 현장의 프로젝트를 기반으로 학습합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="수료 후 지원" data-en="Post-Completion Support">수료 후 지원</h3>
+                    <p data-ko="교육 수료 후에도 지속적인 기술 지원을 제공합니다." data-en="We provide continuous technical support even after course completion.">교육 수료 후에도 지속적인 기술 지원을 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="교육 대상" data-en="Target Audience">교육 대상</h2>
+            <ul>
+                <li data-ko="FPGA 설계 입문자 및 초급 개발자" data-en="FPGA design beginners and junior developers">FPGA 설계 입문자 및 초급 개발자</li>
+                <li data-ko="하드웨어 엔지니어" data-en="Hardware engineers">하드웨어 엔지니어</li>
+                <li data-ko="임베디드 소프트웨어 개발자" data-en="Embedded software developers">임베디드 소프트웨어 개발자</li>
+                <li data-ko="전자/전기 공학 전공 학생" data-en="Electronics/Electrical engineering students">전자/전기 공학 전공 학생</li>
+                <li data-ko="FPGA 기술을 도입하려는 기업 실무자" data-en="Corporate practitioners looking to adopt FPGA technology">FPGA 기술을 도입하려는 기업 실무자</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="교육 환경" data-en="Training Environment">교육 환경</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="개발 보드" data-en="Development Boards">개발 보드</h3>
+                    <ul>
+                        <li>Xilinx Zynq UltraScale+ MPSoC</li>
+                        <li>Xilinx Zynq-7000</li>
+                        <li>Intel Cyclone/Arria FPGA</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="개발 도구" data-en="Development Tools">개발 도구</h3>
+                    <ul>
+                        <li>Vivado Design Suite</li>
+                        <li>Vitis HLS</li>
+                        <li>ModelSim/QuestaSim</li>
+                        <li>Intel Quartus Prime</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="실습 장비" data-en="Practice Equipment">실습 장비</h3>
+                    <ul>
+                        <li data-ko="오실로스코프" data-en="Oscilloscope">오실로스코프</li>
+                        <li data-ko="로직 분석기" data-en="Logic Analyzer">로직 분석기</li>
+                        <li data-ko="프로토콜 분석기" data-en="Protocol Analyzer">프로토콜 분석기</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="교육 과정 구성" data-en="Course Structure">교육 과정 구성</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="기초 과정 (2주)" data-en="Basic Course (2 weeks)">기초 과정 (2주)</h3>
+                    <p data-ko="FPGA 설계의 기본 개념과 Verilog HDL을 학습합니다." data-en="Learn basic concepts of FPGA design and Verilog HDL.">FPGA 설계의 기본 개념과 Verilog HDL을 학습합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="중급 과정 (3주)" data-en="Intermediate Course (3 weeks)">중급 과정 (3주)</h3>
+                    <p data-ko="실전 프로젝트를 통해 설계 능력을 향상시킵니다." data-en="Improve design skills through practical projects.">실전 프로젝트를 통해 설계 능력을 향상시킵니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="고급 과정 (4주)" data-en="Advanced Course (4 weeks)">고급 과정 (4주)</h3>
+                    <p data-ko="Zynq SoC 및 HLS를 활용한 고급 설계 기법을 배웁니다." data-en="Learn advanced design techniques using Zynq SoC and HLS.">Zynq SoC 및 HLS를 활용한 고급 설계 기법을 배웁니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="교육 일정 및 신청" data-en="Schedule & Application">교육 일정 및 신청</h2>
+            <p data-ko="교육 과정은 정기적으로 개설되며, 기업 맞춤형 교육도 가능합니다." 
+               data-en="Training courses are regularly offered, and customized corporate training is also available.">
+                교육 과정은 정기적으로 개설되며, 기업 맞춤형 교육도 가능합니다.
+            </p>
+            <ul>
+                <li data-ko="평일반: 월~금 (주 5일)" data-en="Weekday class: Mon-Fri (5 days/week)">평일반: 월~금 (주 5일)</li>
+                <li data-ko="주말반: 토 (주 1일)" data-en="Weekend class: Sat (1 day/week)">주말반: 토 (주 1일)</li>
+                <li data-ko="기업 출강: 협의 가능" data-en="Corporate on-site training: Negotiable">기업 출강: 협의 가능</li>
+                <li data-ko="온라인 교육: 실시간 화상 강의" data-en="Online training: Real-time video lectures">온라인 교육: 실시간 화상 강의</li>
+            </ul>
+            <p data-ko="교육 문의: limgyu@picotronix.co.kr / +82-70-4078-4235" 
+               data-en="Training inquiry: limgyu@picotronix.co.kr / +82-70-4078-4235">
+                교육 문의: limgyu@picotronix.co.kr / +82-70-4078-4235
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="수료 후 혜택" data-en="Benefits After Completion">수료 후 혜택</h2>
+            <ul>
+                <li data-ko="수료증 발급" data-en="Certificate issuance">수료증 발급</li>
+                <li data-ko="기술 자문 서비스 제공" data-en="Technical consultation service">기술 자문 서비스 제공</li>
+                <li data-ko="프로젝트 협업 기회" data-en="Project collaboration opportunities">프로젝트 협업 기회</li>
+                <li data-ko="최신 기술 정보 공유" data-en="Latest technology information sharing">최신 기술 정보 공유</li>
+                <li data-ko="커뮤니티 네트워킹" data-en="Community networking">커뮤니티 네트워킹</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Picotronix. All rights reserved.</p>
+        <p data-ko="FPGA & SoC 설계 전문기업" data-en="FPGA & SoC Design Specialist">FPGA & SoC 설계 전문기업</p>
+    </footer>
+
+    <script>
+        let currentLang = 'ko';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ko' ? 'en' : 'ko';
+            const elements = document.querySelectorAll('[data-ko][data-en]');
+            
+            elements.forEach(el => {
+                if (currentLang === 'en') {
+                    el.textContent = el.getAttribute('data-en');
+                } else {
+                    el.textContent = el.getAttribute('data-ko');
+                }
+            });
+
+            document.querySelector('.lang-toggle').textContent = currentLang === 'ko' ? 'EN' : '한글';
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+</body>
+</html>

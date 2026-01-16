@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPGA & SoC Embedded System - Picotronix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        body[lang="en"], [lang="en"] {
+            font-family: 'Lora', 'Georgia', serif;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-controls {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn, .lang-toggle {
+            background: #F38554;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover, .lang-toggle:hover {
+            background: #d16d3f;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            color: #F38554;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #F38554;
+            padding-bottom: 0.5rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #F38554;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #F38554;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-btn, .lang-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-controls">
+            <a href="index.html" class="back-btn" data-ko="← 메인으로" data-en="← Back">← 메인으로</a>
+            <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+        </div>
+        <h1>FPGA & SoC Embedded System</h1>
+        <p data-ko="고성능 임베디드 영상처리 솔루션" data-en="High-performance Embedded Vision Processing Solution">고성능 임베디드 영상처리 솔루션</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2 data-ko="개요" data-en="Overview">개요</h2>
+            <p data-ko="Picotronix는 FPGA 및 SoC 기반의 고성능 임베디드 영상처리 시스템을 설계하고 개발합니다. 실시간 영상처리가 필요한 다양한 산업 분야에 최적화된 솔루션을 제공합니다." 
+               data-en="Picotronix designs and develops high-performance embedded vision processing systems based on FPGA and SoC. We provide optimized solutions for various industrial fields requiring real-time image processing.">
+                Picotronix는 FPGA 및 SoC 기반의 고성능 임베디드 영상처리 시스템을 설계하고 개발합니다. 실시간 영상처리가 필요한 다양한 산업 분야에 최적화된 솔루션을 제공합니다.
+            </p>
+            <p data-ko="31년의 엔지니어링 경험을 바탕으로 고객의 요구사항을 정확히 이해하고, 최적의 성능과 안정성을 갖춘 시스템을 구현합니다."
+               data-en="Based on 31 years of engineering experience, we accurately understand customer requirements and implement systems with optimal performance and stability.">
+                31년의 엔지니어링 경험을 바탕으로 고객의 요구사항을 정확히 이해하고, 최적의 성능과 안정성을 갖춘 시스템을 구현합니다.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="핵심 기술" data-en="Core Technologies">핵심 기술</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="임베디드 HW/SW 설계" data-en="Embedded HW/SW Design">임베디드 HW/SW 설계</h3>
+                    <p data-ko="PCIe DMA 및 주변회로 설계, DDR4, QSPI 등 고속 인터페이스 신호 처리 기술을 보유하고 있습니다. 하드웨어와 소프트웨어의 완벽한 조화를 통해 최적의 성능을 구현합니다." 
+                       data-en="We have expertise in PCIe DMA and peripheral circuit design, high-speed interface signal processing (DDR4, QSPI). We achieve optimal performance through perfect harmony of hardware and software.">
+                        PCIe DMA 및 주변회로 설계, DDR4, QSPI 등 고속 인터페이스 신호 처리 기술을 보유하고 있습니다. 하드웨어와 소프트웨어의 완벽한 조화를 통해 최적의 성능을 구현합니다.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>ISP (Image Signal Processing)</h3>
+                    <p data-ko="실시간 영상 신호 처리 및 화질 개선 알고리즘을 개발합니다. 노이즈 제거, 색상 보정, 화질 향상 등 다양한 ISP 기능을 FPGA에 최적화하여 구현합니다." 
+                       data-en="We develop real-time image signal processing and image quality enhancement algorithms. Various ISP functions such as noise reduction, color correction, and image enhancement are optimized for FPGA.">
+                        실시간 영상 신호 처리 및 화질 개선 알고리즘을 개발합니다. 노이즈 제거, 색상 보정, 화질 향상 등 다양한 ISP 기능을 FPGA에 최적화하여 구현합니다.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="고성능 영상처리" data-en="High-performance Vision Processing">고성능 영상처리</h3>
+                    <p data-ko="FPGA 기반 병렬 처리를 통한 초고속 영상 분석 시스템을 구축합니다. 실시간 객체 인식, 추적, 분석 등 복잡한 영상처리 작업을 빠르게 수행합니다." 
+                       data-en="We build ultra-fast image analysis systems through FPGA-based parallel processing. Complex image processing tasks such as real-time object recognition, tracking, and analysis are performed quickly.">
+                        FPGA 기반 병렬 처리를 통한 초고속 영상 분석 시스템을 구축합니다. 실시간 객체 인식, 추적, 분석 등 복잡한 영상처리 작업을 빠르게 수행합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="기술 역량" data-en="Technical Capabilities">기술 역량</h2>
+            <ul>
+                <li data-ko="Xilinx, Intel FPGA 플랫폼 개발 경험" data-en="Development experience with Xilinx, Intel FPGA platforms">Xilinx, Intel FPGA 플랫폼 개발 경험</li>
+                <li data-ko="Zynq UltraScale+, Zynq-7000 SoC 설계" data-en="Zynq UltraScale+, Zynq-7000 SoC design">Zynq UltraScale+, Zynq-7000 SoC 설계</li>
+                <li data-ko="고속 인터페이스: PCIe Gen3/4, DDR4, 10GbE" data-en="High-speed interfaces: PCIe Gen3/4, DDR4, 10GbE">고속 인터페이스: PCIe Gen3/4, DDR4, 10GbE</li>
+                <li data-ko="영상 인터페이스: MIPI CSI-2, HDMI, SDI" data-en="Video interfaces: MIPI CSI-2, HDMI, SDI">영상 인터페이스: MIPI CSI-2, HDMI, SDI</li>
+                <li data-ko="리눅스 디바이스 드라이버 개발" data-en="Linux device driver development">리눅스 디바이스 드라이버 개발</li>
+                <li data-ko="HLS(High-Level Synthesis)를 활용한 빠른 개발" data-en="Fast development using HLS (High-Level Synthesis)">HLS(High-Level Synthesis)를 활용한 빠른 개발</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="적용 분야" data-en="Applications">적용 분야</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="산업용 머신 비전" data-en="Industrial Machine Vision">산업용 머신 비전</h3>
+                    <p data-ko="제조 공정의 품질 검사, 불량 감지, 측정 시스템에 적용" data-en="Applied to quality inspection, defect detection, and measurement systems in manufacturing processes">제조 공정의 품질 검사, 불량 감지, 측정 시스템에 적용</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="의료 영상 처리" data-en="Medical Image Processing">의료 영상 처리</h3>
+                    <p data-ko="의료 기기의 실시간 영상 처리 및 분석" data-en="Real-time image processing and analysis for medical devices">의료 기기의 실시간 영상 처리 및 분석</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="자동차 ADAS" data-en="Automotive ADAS">자동차 ADAS</h3>
+                    <p data-ko="첨단 운전자 보조 시스템의 영상 인식 및 처리" data-en="Image recognition and processing for advanced driver assistance systems">첨단 운전자 보조 시스템의 영상 인식 및 처리</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="방송 및 영상 장비" data-en="Broadcasting Equipment">방송 및 영상 장비</h3>
+                    <p data-ko="방송용 영상 변환, 스위칭, 처리 장비" data-en="Video conversion, switching, and processing equipment for broadcasting">방송용 영상 변환, 스위칭, 처리 장비</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="개발 프로세스" data-en="Development Process">개발 프로세스</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="1. 요구사항 분석" data-en="1. Requirements Analysis">1. 요구사항 분석</h3>
+                    <p data-ko="고객의 요구사항을 정확히 파악하고 최적의 솔루션을 제안합니다." data-en="We accurately identify customer requirements and propose optimal solutions.">고객의 요구사항을 정확히 파악하고 최적의 솔루션을 제안합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="2. 설계 및 구현" data-en="2. Design & Implementation">2. 설계 및 구현</h3>
+                    <p data-ko="하드웨어 설계, FPGA 로직 개발, 소프트웨어 개발을 진행합니다." data-en="We proceed with hardware design, FPGA logic development, and software development.">하드웨어 설계, FPGA 로직 개발, 소프트웨어 개발을 진행합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="3. 검증 및 테스트" data-en="3. Verification & Testing">3. 검증 및 테스트</h3>
+                    <p data-ko="시뮬레이션, 프로토타입 제작, 성능 테스트를 수행합니다." data-en="We perform simulation, prototype manufacturing, and performance testing.">시뮬레이션, 프로토타입 제작, 성능 테스트를 수행합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="4. 양산 지원" data-en="4. Production Support">4. 양산 지원</h3>
+                    <p data-ko="양산 준비부터 기술 지원까지 전 과정을 함께합니다." data-en="We support the entire process from production preparation to technical support.">양산 준비부터 기술 지원까지 전 과정을 함께합니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Picotronix. All rights reserved.</p>
+        <p data-ko="FPGA & SoC 설계 전문기업" data-en="FPGA & SoC Design Specialist">FPGA & SoC 설계 전문기업</p>
+    </footer>
+
+    <script>
+        let currentLang = 'ko';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ko' ? 'en' : 'ko';
+            const elements = document.querySelectorAll('[data-ko][data-en]');
+            
+            elements.forEach(el => {
+                if (currentLang === 'en') {
+                    el.textContent = el.getAttribute('data-en');
+                } else {
+                    el.textContent = el.getAttribute('data-ko');
+                }
+            });
+
+            document.querySelector('.lang-toggle').textContent = currentLang === 'ko' ? 'EN' : '한글';
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+</body>
+</html>

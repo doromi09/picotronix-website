@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farm - Picotronix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        body[lang="en"], [lang="en"] {
+            font-family: 'Lora', 'Georgia', serif;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-controls {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn, .lang-toggle {
+            background: #F38554;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover, .lang-toggle:hover {
+            background: #d16d3f;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            color: #F38554;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #F38554;
+            padding-bottom: 0.5rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #F38554;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #F38554;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-btn, .lang-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-controls">
+            <a href="index.html" class="back-btn" data-ko="← 메인으로" data-en="← Back">← 메인으로</a>
+            <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+        </div>
+        <h1>Smart Farm</h1>
+        <p data-ko="스마트 농업 솔루션" data-en="Smart Agriculture Solution">스마트 농업 솔루션</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2 data-ko="개요" data-en="Overview">개요</h2>
+            <p data-ko="IoT 기술을 활용한 스마트팜 측정 및 제어 시스템을 개발합니다. 데이터 기반의 정밀 농업을 실현합니다." 
+               data-en="We develop smart farm measurement and control systems using IoT technology. We realize data-driven precision agriculture.">
+                IoT 기술을 활용한 스마트팜 측정 및 제어 시스템을 개발합니다. 데이터 기반의 정밀 농업을 실현합니다.
+            </p>
+            <p data-ko="Picotronix의 스마트팜 솔루션은 농작물 생장에 필요한 환경을 최적화하고, 실시간 모니터링과 자동 제어를 통해 생산성을 향상시킵니다. 농업의 디지털 전환을 선도합니다."
+               data-en="Picotronix's smart farm solution optimizes the environment necessary for crop growth and improves productivity through real-time monitoring and automatic control. We lead the digital transformation of agriculture.">
+                Picotronix의 스마트팜 솔루션은 농작물 생장에 필요한 환경을 최적화하고, 실시간 모니터링과 자동 제어를 통해 생산성을 향상시킵니다. 농업의 디지털 전환을 선도합니다.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="제품 및 서비스" data-en="Products & Services">제품 및 서비스</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="토양상태 측정기" data-en="Soil Condition Meter">토양상태 측정기</h3>
+                    <p data-ko="토양 수분, pH, EC(전기전도도), 온도 등을 실시간으로 모니터링합니다. 정확한 센싱 기술로 토양 상태를 파악하여 최적의 재배 환경을 만듭니다." 
+                       data-en="Real-time monitoring of soil moisture, pH, EC (electrical conductivity), temperature, etc. We create optimal cultivation conditions by accurately sensing soil conditions.">
+                        토양 수분, pH, EC(전기전도도), 온도 등을 실시간으로 모니터링합니다. 정확한 센싱 기술로 토양 상태를 파악하여 최적의 재배 환경을 만듭니다.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="배지상태 측정기" data-en="Medium Condition Meter">배지상태 측정기</h3>
+                    <p data-ko="수경재배 배지의 양분, EC, pH 등을 측정하여 식물에 필요한 영양분을 정확히 공급합니다. 배양액의 상태를 지속적으로 모니터링합니다." 
+                       data-en="We measure nutrients, EC, pH, etc. of hydroponic medium to accurately supply nutrients needed by plants. We continuously monitor the condition of the nutrient solution.">
+                        수경재배 배지의 양분, EC, pH 등을 측정하여 식물에 필요한 영양분을 정확히 공급합니다. 배양액의 상태를 지속적으로 모니터링합니다.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="생장 모니터링" data-en="Growth Monitoring">생장 모니터링</h3>
+                    <p data-ko="식물의 생장 데이터를 수집하고 분석하여 생장 패턴을 파악합니다. 영상 기반 모니터링으로 식물의 상태를 정밀하게 관찰합니다." 
+                       data-en="We collect and analyze plant growth data to understand growth patterns. We precisely observe plant conditions through image-based monitoring.">
+                        식물의 생장 데이터를 수집하고 분석하여 생장 패턴을 파악합니다. 영상 기반 모니터링으로 식물의 상태를 정밀하게 관찰합니다.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="자동 제어" data-en="Automatic Control">자동 제어</h3>
+                    <p data-ko="측정된 환경 데이터를 기반으로 관수, 양액 공급, 온도, 습도, 조명 등을 자동으로 제어합니다. 최적의 생장 환경을 24시간 유지합니다." 
+                       data-en="Automatically controls irrigation, nutrient supply, temperature, humidity, lighting, etc. based on measured environmental data. Maintains optimal growth environment 24/7.">
+                        측정된 환경 데이터를 기반으로 관수, 양액 공급, 온도, 습도, 조명 등을 자동으로 제어합니다. 최적의 생장 환경을 24시간 유지합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="시스템 특징" data-en="System Features">시스템 특징</h2>
+            <ul>
+                <li data-ko="실시간 모니터링 및 알림 기능" data-en="Real-time monitoring and notification">실시간 모니터링 및 알림 기능</li>
+                <li data-ko="모바일 앱을 통한 원격 제어" data-en="Remote control via mobile app">모바일 앱을 통한 원격 제어</li>
+                <li data-ko="데이터 로깅 및 분석 리포트 제공" data-en="Data logging and analysis report">데이터 로깅 및 분석 리포트 제공</li>
+                <li data-ko="AI 기반 생장 예측 및 최적화" data-en="AI-based growth prediction and optimization">AI 기반 생장 예측 및 최적화</li>
+                <li data-ko="에너지 효율적인 설계" data-en="Energy-efficient design">에너지 효율적인 설계</li>
+                <li data-ko="확장 가능한 모듈형 구조" data-en="Scalable modular structure">확장 가능한 모듈형 구조</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="측정 항목" data-en="Measurement Parameters">측정 항목</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="토양/배지" data-en="Soil/Medium">토양/배지</h3>
+                    <ul>
+                        <li data-ko="수분 함량" data-en="Moisture content">수분 함량</li>
+                        <li>pH</li>
+                        <li>EC (전기전도도)</li>
+                        <li data-ko="온도" data-en="Temperature">온도</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="대기 환경" data-en="Atmospheric Environment">대기 환경</h3>
+                    <ul>
+                        <li data-ko="온도" data-en="Temperature">온도</li>
+                        <li data-ko="습도" data-en="Humidity">습도</li>
+                        <li>CO2 농도</li>
+                        <li data-ko="조도" data-en="Illuminance">조도</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="양액" data-en="Nutrient Solution">양액</h3>
+                    <ul>
+                        <li>pH</li>
+                        <li>EC</li>
+                        <li data-ko="온도" data-en="Temperature">온도</li>
+                        <li data-ko="용존산소" data-en="Dissolved oxygen">용존산소</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="적용 분야" data-en="Applications">적용 분야</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="시설 원예" data-en="Greenhouse Horticulture">시설 원예</h3>
+                    <p data-ko="온실, 비닐하우스 등의 환경 제어 및 모니터링" data-en="Environmental control and monitoring of greenhouses and vinyl houses">온실, 비닐하우스 등의 환경 제어 및 모니터링</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="수경재배" data-en="Hydroponics">수경재배</h3>
+                    <p data-ko="양액 관리 및 자동화 시스템" data-en="Nutrient management and automation systems">양액 관리 및 자동화 시스템</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="식물 공장" data-en="Plant Factory">식물 공장</h3>
+                    <p data-ko="완전 제어형 실내 농업 시스템" data-en="Fully controlled indoor agriculture systems">완전 제어형 실내 농업 시스템</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="노지 재배" data-en="Open Field Cultivation">노지 재배</h3>
+                    <p data-ko="토양 및 기상 모니터링" data-en="Soil and weather monitoring">토양 및 기상 모니터링</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="기대 효과" data-en="Expected Benefits">기대 효과</h2>
+            <ul>
+                <li data-ko="생산량 20-30% 증가" data-en="20-30% increase in production">생산량 20-30% 증가</li>
+                <li data-ko="물 사용량 30-40% 절감" data-en="30-40% reduction in water usage">물 사용량 30-40% 절감</li>
+                <li data-ko="비료 사용량 20-30% 절감" data-en="20-30% reduction in fertilizer usage">비료 사용량 20-30% 절감</li>
+                <li data-ko="노동력 50% 절감" data-en="50% reduction in labor">노동력 50% 절감</li>
+                <li data-ko="품질 균일성 향상" data-en="Improved quality uniformity">품질 균일성 향상</li>
+                <li data-ko="재배 기간 단축" data-en="Shortened cultivation period">재배 기간 단축</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 data-ko="솔루션 구성" data-en="Solution Configuration">솔루션 구성</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3 data-ko="센서 모듈" data-en="Sensor Module">센서 모듈</h3>
+                    <p data-ko="다양한 환경 데이터를 정밀하게 측정하는 센서" data-en="Sensors that precisely measure various environmental data">다양한 환경 데이터를 정밀하게 측정하는 센서</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="제어 장치" data-en="Control Device">제어 장치</h3>
+                    <p data-ko="관수, 양액, 환경 제어를 수행하는 액추에이터" data-en="Actuators that perform irrigation, nutrient, and environmental control">관수, 양액, 환경 제어를 수행하는 액추에이터</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="통신 게이트웨이" data-en="Communication Gateway">통신 게이트웨이</h3>
+                    <p data-ko="센서와 클라우드를 연결하는 IoT 게이트웨이" data-en="IoT gateway connecting sensors and cloud">센서와 클라우드를 연결하는 IoT 게이트웨이</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="클라우드 플랫폼" data-en="Cloud Platform">클라우드 플랫폼</h3>
+                    <p data-ko="데이터 저장, 분석, 시각화를 제공하는 플랫폼" data-en="Platform providing data storage, analysis, and visualization">데이터 저장, 분석, 시각화를 제공하는 플랫폼</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="모바일 앱" data-en="Mobile App">모바일 앱</h3>
+                    <p data-ko="언제 어디서나 접근 가능한 사용자 인터페이스" data-en="User interface accessible anytime, anywhere">언제 어디서나 접근 가능한 사용자 인터페이스</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-ko="AI 엔진" data-en="AI Engine">AI 엔진</h3>
+                    <p data-ko="데이터 분석 및 최적화 알고리즘" data-en="Data analysis and optimization algorithms">데이터 분석 및 최적화 알고리즘</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Picotronix. All rights reserved.</p>
+        <p data-ko="FPGA & SoC 설계 전문기업" data-en="FPGA & SoC Design Specialist">FPGA & SoC 설계 전문기업</p>
+    </footer>
+
+    <script>
+        let currentLang = 'ko';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ko' ? 'en' : 'ko';
+            const elements = document.querySelectorAll('[data-ko][data-en]');
+            
+            elements.forEach(el => {
+                if (currentLang === 'en') {
+                    el.textContent = el.getAttribute('data-en');
+                } else {
+                    el.textContent = el.getAttribute('data-ko');
+                }
+            });
+
+            document.querySelector('.lang-toggle').textContent = currentLang === 'ko' ? 'EN' : '한글';
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+</body>
+</html>
